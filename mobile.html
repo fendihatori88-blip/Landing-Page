@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Landing Page</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #0a0a0a;
+      color: #FFD700;
+    }
+
+    header {
+            display: flex;
+            align-items: center;          /* center vertikal */
+            justify-content: center;      /* teks di tengah */
+            position: relative;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #000000 100%);
+            flex-wrap: wrap;
+            gap: 10px;
+}
+
+header .logo {
+  width: 8vw;                   /* ukuran logo otomatis ikut lebar layar */
+  max-width: 150px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+header::after {
+  content: "";
+  display: block;
+  width: 8vw; /* sama kayak logo */
+  max-width: 150px;
+}
+
+header h1 {
+  font-size: clamp(1.5rem, 2.5vw, 3rem); /* responsive font size */
+  margin: 0;
+  color: #FFD700;
+  text-shadow: 0 0 15px #FFD700;
+  background: linear-gradient(90deg, #e6b30ff3, #ff9900, #FFD700);
+  background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+  text-align: center;
+  flex: 1 1 auto;
+  transform: none;
+text-align: center;
+
+}
+
+  @keyframes shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;    /* logo pindah ke atas teks */
+    align-items: center;
+  }
+
+  header h1 {
+    font-size: 2rem;           /* teks tetap readable */
+  }
+
+  header .logo {
+    width: 120px;              /* logo tetap proporsional */
+    margin-bottom: 10px;       /* beri jarak dengan teks */
+  }
+}
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 80vh;
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://imagedelivery.net/_IP0fEMP4F-W0FKGt0DEHg/b159d573-97e2-4598-a3bc-a6002a315f00/public') center/cover no-repeat;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #FFD700;
+      background: linear-gradient(90deg, #f3d219, #f0a709, #FFD700);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow: 0 0 20px black rgba(0, 0, 0, 1), 0 0 10px #FFD700;
+
+      animation: shineh2 5s linear infinite;
+    }
+
+      @keyframes shineh2 {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+      }
+
+.btn {
+  position: relative;           /* penting supaya ::before bisa posisinya relatif ke tombol */
+  overflow: hidden;             /* supaya shine tidak keluar dari tombol */
+  background: linear-gradient(135deg, #FFD700, #b8860b);
+  color: #000;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* pseudo-element untuk shinebtn */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;                   /* mulai dari kiri luar tombol */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 238, 0, 0.548) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shinebtn 1.5s linear infinite;
+}
+
+/* animasi shine saat hover */
+.btn:hover::before {
+  animation: shinebtn 1s forwards;
+}
+
+@keyframes shinebtn {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+    .btn:hover {
+      background: #000;
+      color: #FFD700;
+      border: 2px solid #FFD700;
+      box-shadow: 0 0 20px #FFD700;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 50px;
+      background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #c2a70d;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #FFD700;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #FFD700;
+      color: #FFD700;
+    }
+
+    /* Responsive untuk layar kecil */
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      header .logo {
+        width: 120px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.ibb.co/WpY2hdn5/inatogel-logo.png" alt="Logo Game" class="logo">
+    <h1>PERTARUNGAN SLOTGAME TIADA HENTI</h1>
+  </header>
+
+  <section class="hero">
+    <h2>TEMUKAN KEMENANGAN MU DI INATOGEL!</h2>
+    <div style="display:flex; gap:20px; justify-content:center; margin-top:20px;">
+      <a href="https://modeinago.com/" target="_blank" class="btn">MAIN SEKARANG</a> 
+      <a href="https://modeinago.com/register/" target="_blank" class="btn">DAFTAR SEKARANG</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="card" onclick="window.open('https://rtp5.inatips.com/client/rtp','_blank')">
+      <h3>🪙RTP SLOTGAME🪙</h3>
+      <p>Raih kemenangan maksimal dengan RTP tinggi!.</p>
+    </div>
+    <div class="card" onclick="window.open('https://blog5.inatips.com/client/blog/prediksi','_blank')">
+      <h3>🎯PREDIKSI TOGEL🎯</h3>
+      <p>Prediksi hoki hari ini, cek angka pilihanmu.</p>
+    </div>
+    <div class="card" onclick="window.open('https://buktijp1.inatips.com/client/buktijp','_blank')">
+      <h3>💸BUKTI JACKPOT💸</h3>
+      <p>Para player kami sudah bawa pulang hadiah besar – giliranmu?💰</p>
+    </div>
+    <div class="card" onclick="window.open('https://promo1.inatips.com/client/promo','_blank')">
+      <h3>🎁PROMO🎁</h3>
+      <p>Keseruan Maksimal & Hadiah Menarik Menantimu!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Golden Battle Arena. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
